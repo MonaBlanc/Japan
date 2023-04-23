@@ -1,381 +1,1309 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Japan !</title>
-    <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to Japan !</title>
+  <link rel="stylesheet" href="style.css">
+  <!--Japan icons created by Tanah Basah - Flaticon-->
+  <link rel="shortcut icon" href="images\japanIcon.png" type="image/png">
+  <style>
+    :root {
+      --card-width: 200px;
+      --card-height: 300px;
+      --card-transition-duration: 800ms;
+      --card-transition-easing: ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .containers1 {
+      width: 100%;
+      height: 100vh;
+      background-image: linear-gradient(rgba(0, 0, 0, 0.4), transparent), url(images/1515607.jpg);
+      background-size: cover;
+      background-position: center;
+      padding: 0 8%;
+      position: relative;
+    }
+
+    .navContainer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: absolute;
+      right: 0;
+      left: 0;
+    }
+
+    nav {
+      display: flex;
+      width: 90%;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 5px 0;
+      z-index: 1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
+
+    .logo {
+      width: 250px;
+      cursor: pointer;
+    }
+
+    .flight-icon {
+      width: 30px;
+      cursor: pointer;
+      margin-left: auto;
+    }
+
+    nav ul {
+      flex: 1;
+      text-align: center;
+      padding-right: 30px;
+    }
+
+    nav ul li {
+      display: inline-block;
+      list-style: none;
+      margin: 10px 30px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      position: relative;
+    }
+
+    nav ul li a::after {
+      content: '';
+      width: 0;
+      height: 3px;
+      background: #fff;
+      position: absolute;
+      left: 50%;
+      bottom: -5px;
+      transform: translateX(-50%);
+      transition: width 0.3s;
+    }
+
+    nav ul li a:hover::after {
+      width: 50%;
+    }
+
+    nav ul li a.active::after {
+      width: 50%;
+    }
+
+    .text-box {
+      color: #fff;
+      position: absolute;
+      bottom: 8%;
+    }
+
+    .text-box h1 {
+      font-size: 150px;
+      line-height: 160px;
+      margin-left: -10px;
+      color: transparent;
+      -webkit-text-stroke: 1px #fff;
+      background: url(images/back.png);
+      -webkit-background-clip: text;
+      background-position: 0 0;
+      animation: back 20s linear infinite;
+    }
+
+    @keyframes back {
+      0% {
+        background-position: 0 0;
+      }
+
+      100% {
+        background-position: 2000px 0;
+      }
+    }
+
+    .text-box p {
+      font-size: 50px;
+      font-weight: 600;
+    }
+
+    .text-box h3 {
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    .text-box a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      margin-right: 20px;
+      border: 2px solid #fff;
+      display: flex;
+      align-items: center;
+    }
+
+    .text-box .row {
+      display: flex;
+      align-items: center;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .text-box a span {
+      font-size: 10px;
+      line-height: 15px;
+      margin-left: 5px;
+    }
+
+    .social-icons {
+      position: absolute;
+      right: 5%;
+      bottom: 8%;
+    }
+
+    .social-icons img {
+      width: 20px;
+      margin: 20px 5px;
+      display: block;
+    }
+
+    .containers2 {
+      width: 100%;
+      height: 100vh;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      background-image: url(https://images.pexels.com/photos/707670/pexels-photo-707670.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb);
+    }
+
+    .center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .mainContainer {
+      background: rgba(255, 255, 255, 0.32);
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(7.8px);
+      -webkit-backdrop-filter: blur(7.8px);
+      height: 600px;
+      width: 1050px;
+      margin: 0 auto;
+      margin-top: 50px;
+      box-shadow: 0 0 10px #2323;
+      display: flex;
+    }
+
+    .mainContainer>.menu {
+      width: 75px;
+      color: #3e3e3e;
+      border-right: 1px solid rgba(62, 62, 62, 0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 50px;
+    }
+
+    .mainContainer>.menu>.quote {
+      width: 400px;
+      height: 70px;
+      color: rgba(62, 62, 62, 0.3);
+      font-weight: bolder;
+      font-size: 14px;
+      letter-spacing: 5px;
+      transform: rotate(-90deg);
+      position: relative;
+      top: 200px;
+    }
+
+    .mainContainer>.content {
+      width: 350px;
+    }
+
+    .mainContainer>.content>.header {
+      height: 120px;
+      font-weight: 800;
+      line-height: 1.2;
+      font-size: 45px;
+      letter-spacing: 3px;
+      justify-content: flex-start;
+      padding-left: 25px;
+      color: #3e3e3e;
+      margin-top: 20px;
+    }
+
+    .mainContainer>.content>.info {
+      padding: 20px 24px;
+      height: 300px;
+      font-size: 14px;
+      font-weight: bolder;
+      line-height: 2.2em;
+      font-family: 'Raleway', sans-serif;
+      letter-spacing: 2px;
+    }
+
+    .jap {
+      height: 30px;
+      padding-left: 25px;
+      font-weight: bolder;
+      font-size: 16px;
+      color: #bc002d;
+      font-family: 'Raleway', sans-serif;
+      letter-spacing: 2px;
+    }
+
+    .mainContainer>.content>.flag {
+      height: 50px;
+      position: relative;
+      top: 56px;
+      display: flex;
+      align-items: center;
+    }
+
+    .mainContainer>.content>.flag>img {
+      margin-left: 25px;
+      height: 40px;
+      box-shadow: 0 0 10px #2323;
+    }
+
+    .mainContainer>.content>.flag>span {
+      margin-left: 15px;
+      font-weight: bolder;
+      font-size: 12px;
+      color: #bc002d;
+      letter-spacing: 2px;
+    }
+
+    .imgHold {
+      height: 600px;
+      width: 550px;
+      overflow: hidden;
+    }
+
+    .imgAffiche {
+      height: 600px;
+
+    }
+
+    .footer {
+      width: 70px;
+      flex-direction: column;
+      justify-content: center;
+      color: white;
+    }
+
+    .footer>i {
+      font-size: 18px;
+      padding-top: 18px;
+      font-weight: bolder;
+    }
+
+
+    #radios {
+      position: relative;
+      margin: 0 auto;
+    }
+
+    input[type="radio"] {
+      position: absolute;
+      display: none;
+    }
+
+    label {
+      display: flex;
+      width: 18px;
+      height: 18px;
+      background: rgba(255, 255, 255, .2);
+      border-radius: 50%;
+      cursor: pointer;
+      margin-top: 3px;
+
+    }
+
+    #contentSlider {
+      position: absolute;
+      top: 0%;
+      width: 12px;
+      height: 12px;
+      margin: 7px 0 0 3px;
+      background: #fff;
+      transition: transform 1s;
+      border-radius: 50%;
+      animation-timing-function: ease-in-out;
+      animation-duration: .3s;
+      animation-fill-mode: forwards;
+      transition: 0.2s top .05s ease-in-out;
+    }
+
+    #input1:checked~#contentSlider {
+      animation-name: input1;
+      top: 0;
+    }
+
+    #input2:checked~#contentSlider {
+      animation-name: input2;
+      top: 20%;
+    }
+
+    #input3:checked~#contentSlider {
+      animation-name: input3;
+      top: 40%;
+    }
+
+    #input4:checked~#contentSlider {
+      animation-name: input4;
+      top: 60%;
+    }
+
+    #input5:checked~#contentSlider {
+      animation-name: input5;
+      top: 80%;
+    }
+
+    @keyframes input1 {
+
+      30%,
+      70% {
+        transform: scale(0.5);
+      }
+    }
+
+    @keyframes input2 {
+
+      30%,
+      70% {
+        transform: scale(0.5);
+      }
+    }
+
+    @keyframes input3 {
+
+      30%,
+      70% {
+        transform: scale(0.5);
+      }
+    }
+
+    @keyframes input4 {
+
+      30%,
+      70% {
+        transform: scale(0.5);
+      }
+    }
+
+    @keyframes input5 {
+
+      30%,
+      70% {
+        transform: scale(0.5);
+      }
+    }
+
+
+    .boxFood {
+      width: 700px;
+      height: 630px;
+      /* background: #3e3e3e;  */
+      margin: 100px auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .containers3 {
+      width: 100%;
+      height: 100vh;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      background-image: url(https://images.unsplash.com/photo-1518146172696-7a1975ca03e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8ZGFyayUyMGphcGFufGVufDB8fDB8fA%3D%3D&w=1000&q=80);
+    }
+
+    .containers3 .bloc {
+      height: 70px;
+      margin: 5px;
+      border-radius: 25px;
+      background-image: repeating-linear-gradient(135deg, rgba(189, 189, 189, 0.1) 0px, rgba(189, 189, 189, 0.1) 2px, transparent 2px, transparent 4px), linear-gradient(90deg, rgb(255, 255, 255), rgb(255, 255, 255));
+      flex-grow: 1;
+      transition: flex-grow 0.4s ease-out;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .containers3 .bloc:hover {
+      cursor: pointer;
+    }
+
+    .containers3 .active {
+      flex-grow: 10000;
+    }
+
+    .containers3 .active:hover {
+      cursor: default;
+    }
+
+    .containers3 .bloc * {
+      pointer-events: none;
+    }
+
+    .containers3 .bloc-haut {
+      height: 70px;
+      /* background: #000; */
+      display: flex;
+      align-items: center;
+    }
+
+    .containers3 .rond {
+      margin-left: 20px;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(to right, #222, #333);
+      border-radius: 50%;
+    }
+
+    .containers3 .rond img {
+      width: 40px;
+    }
+
+    .containers3 .bloc .ligne {
+      width: 60%;
+      height: 1px;
+      border-radius: 2px;
+      background: #222;
+      margin: 0 5px 0 auto;
+    }
+
+    .containers3 .titre-section {
+      margin: 0 25px;
+      font-size: 30px;
+    }
+
+    .containers3 .dot {
+      font-size: 22px;
+      margin: 0 18px 0 10px;
+      font-weight: bold;
+    }
+
+    .containers3 .contenu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .containers3 .contenu img {
+      width: 200px;
+      margin-right: 30px;
+      margin-left: 30px;
+    }
+
+    .containers3 .contenu p {
+      width: 350px;
+    }
+
+    .containers3 .infos h2 {
+      letter-spacing: 3px;
+      margin-bottom: 10px;
+    }
+
+    .containers3 .infos p {
+      line-height: 140%;
+    }
+
+    .containers3 .infos button {
+      background: transparent;
+      border: 1px solid #222;
+      padding: 10px 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+      font-size: 17px;
+      pointer-events: auto !important;
+    }
+
+    .containers3.infos button:active {
+      transform: scale(0.95);
+    }
+
+    .containers4 {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    #culture {
+      display: flex;
+      background-color: #031625;
+    }
+
+    #culture:hover .tl-item {
+      width: 23.3333%;
+    }
+
+    .tl-item {
+      transform: translate3d(0, 0, 0);
+      position: relative;
+      width: 25%;
+      height: 100vh;
+      min-height: 600px;
+      color: #fff;
+      overflow: hidden;
+      transition: width 0.5s ease;
+    }
+
+    .tl-item:before,
+    .tl-item:after {
+      transform: translate3d(0, 0, 0);
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .tl-item:after {
+      background: rgba(3, 22, 37, 0.85);
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
+
+    .tl-item:before {
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, black 75%);
+      z-index: 1;
+      opacity: 0;
+      transform: translate3d(0, 0, 0) translateY(50%);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .tl-item:hover {
+      width: 30% !important;
+    }
+
+    .tl-item:hover:after {
+      opacity: 0;
+    }
+
+    .tl-item:hover:before {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) translateY(0);
+      transition: opacity 1s ease, transform 1s ease 0.25s;
+    }
+
+    .tl-item:hover .tl-content {
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 0.75s ease 0.5s;
+    }
+
+    .tl-item:hover .tl-bg {
+      filter: grayscale(0);
+    }
+
+    .tl-content {
+      transform: translate3d(0, 0, 0) translateY(25px);
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      margin: 0 1.618em;
+      top: 55%;
+      opacity: 0;
+    }
+
+    .tl-content h1 {
+      text-transform: uppercase;
+      color: #bc002d;
+      font-size: 1.44rem;
+      font-weight: 800;
+      padding-bottom: 10px;
+    }
+
+    .tl-title {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      z-index: 1;
+    }
+
+    .tl-title p {
+      font-size: 1.728rem;
+      line-height: 1.75;
+    }
+
+    .tl-bg {
+      transform: translate3d(0, 0, 0);
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-size: cover;
+      background-position: center center;
+      transition: filter 0.5s ease;
+      filter: grayscale(100%);
+    }
+
+    .CSSgal {
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+      /* Or set a fixed height */
+    }
+
+    /* SLIDER */
+
+    .CSSgal .slider {
+      height: 100%;
+      white-space: nowrap;
+      font-size: 0;
+      transition: 0.8s;
+    }
+
+    /* SLIDES */
+
+    .CSSgal .slider>* {
+      font-size: 1rem;
+      display: inline-block;
+      white-space: normal;
+      vertical-align: top;
+      height: 100%;
+      width: 100%;
+      background: none 50% no-repeat;
+      background-size: cover;
+    }
+
+    /* PREV/NEXT, CONTAINERS & ANCHORS */
+
+    .CSSgal .prevNext {
+      position: absolute;
+      z-index: 1;
+      top: 50%;
+      width: 100%;
+      height: 0;
+    }
+
+    .CSSgal .prevNext>div+div {
+      visibility: hidden;
+      /* Hide all but first P/N container */
+    }
+
+    .CSSgal .prevNext a {
+      background: #fff;
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      line-height: 60px;
+      /* If you want to place numbers */
+      text-align: center;
+      opacity: 0.7;
+      -webkit-transition: 0.3s;
+      transition: 0.3s;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+      left: 0;
+    }
+
+    .CSSgal .prevNext a:hover {
+      opacity: 1;
+    }
+
+    .CSSgal .prevNext a+a {
+      left: auto;
+      right: 0;
+    }
+
+    /* NAVIGATION */
+
+    .CSSgal .bullets {
+      position: absolute;
+      z-index: 2;
+      bottom: 0;
+      padding: 10px 0;
+      width: 100%;
+      text-align: center;
+    }
+
+    .CSSgal .bullets>a {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      text-decoration: none;
+      text-align: center;
+      background: rgba(255, 255, 255, 1);
+      -webkit-transition: 0.3s;
+      transition: 0.3s;
+    }
+
+    .CSSgal .bullets>a+a {
+      background: rgba(255, 255, 255, 0.5);
+      /* Dim all but first */
+    }
+
+    .CSSgal .bullets>a:hover {
+      background: rgba(255, 255, 255, 0.7) !important;
+    }
+
+    /* NAVIGATION BUTTONS */
+    /* ALL: */
+    .CSSgal>s:target~.bullets>* {
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    /* ACTIVE */
+    #s1:target~.bullets>*:nth-child(1) {
+      background: rgba(255, 255, 255, 1);
+    }
+
+    #s2:target~.bullets>*:nth-child(2) {
+      background: rgba(255, 255, 255, 1);
+    }
+
+    #s3:target~.bullets>*:nth-child(3) {
+      background: rgba(255, 255, 255, 1);
+    }
+
+    #s4:target~.bullets>*:nth-child(4) {
+      background: rgba(255, 255, 255, 1);
+    }
+
+    /* PREV/NEXT CONTAINERS VISIBILITY */
+    /* ALL: */
+    .CSSgal>s:target~.prevNext>* {
+      visibility: hidden;
+    }
+
+    /* ACTIVE: */
+    #s1:target~.prevNext>*:nth-child(1) {
+      visibility: visible;
+    }
+
+    #s2:target~.prevNext>*:nth-child(2) {
+      visibility: visible;
+    }
+
+    #s3:target~.prevNext>*:nth-child(3) {
+      visibility: visible;
+    }
+
+    #s4:target~.prevNext>*:nth-child(4) {
+      visibility: visible;
+    }
+
+    /* SLIDER ANIMATION POSITIONS */
+
+    #s1:target~.slider {
+      transform: translateX(0%);
+      -webkit-transform: translateX(0%);
+    }
+
+    #s2:target~.slider {
+      transform: translateX(-100%);
+      -webkit-transform: translateX(-100%);
+    }
+
+    #s3:target~.slider {
+      transform: translateX(-200%);
+      -webkit-transform: translateX(-200%);
+    }
+
+    #s4:target~.slider {
+      transform: translateX(-300%);
+      -webkit-transform: translateX(-300%);
+    }
+
+
+    .CSSgal .slideLink {
+      border-radius: 50%;
+      margin: 0 3px;
+      color: rgba(0, 0, 0, 0.8);
+      text-decoration: none;
+    }
+  </style>
 </head>
+
+
+
 <body>
+  <!-- Slider -->
   <div class="CSSgal">
-    <s id="s1"></s> 
+    <s id="s1"></s>
     <s id="s2"></s>
     <s id="s3"></s>
     <s id="s4"></s>
+
+    <!-- Fixed Navbar -->
+    <div class="navContainer">
+      <nav>
+        <img src="images/logo.png" class="logo">
+        <ul>
+          <li><a class="active" href="#s1">Home</a></li>
+          <li><a href="#s2">Places</a></li>
+          <li><a href="#s3">Food</a></li>
+          <li><a href="#s4">Culture</a></li>
+        </ul>
+        <img src="images/plane.png" class="flight-icon">
+      </nav>
+    </div>
     <div class="slider">
+
       <!-- First Section -->
       <div>
         <div class="containers1">
-          <nav>
-            <img src="images/logo.png" class="logo">
-            <ul>
-              <li><a class="active" href="#s1">Home</a></li>
-              <li><a href="#s2">Places</a></li>
-              <li><a href="#s3">Food</a></li>
-              <li><a href="#s4">Culture</a></li>
-            </ul>
-            <img src="images/plane.png" class="cart-icon">
-          </nav>
           <div class="text-box">
             <p>Let's go to</p>
             <h1>JAPAN</h1>
             <h3>Let me introduce you to this country!</h3>
-              <div class="row">
-                <a href="#s2">Let's start with places<span>&#x27F6</span></a>
-                <a href="#s3">Let's start with food<span>&#x27F6</span></a>
-                <a href="#s4">Let's start with culture<span>&#x27F6</span></a>
-                <span>You Can Learn More About Japan And<br> Travel Experiences Here</span>
-              </div>
-            </div>
-            <div class="social-icons">
-              <a href="https://www.shecodes.io/contests/dream-travel-destination-challenge/"><img src="images/+1.png"></a>
-              <a href="https://www.linkedin.com/in/kimberley-jacquemot/"><img src="images/linkedin-xxl.png"></a>
+            <div class="row">
+              <a href="#s2">Let's start with places<span>&#x27F6</span></a>
+              <a href="#s3">Let's start with food<span>&#x27F6</span></a>
+              <a href="#s4">Let's start with culture<span>&#x27F6</span></a>
+              <span>You Can Learn More About Japan And<br> Travel Experiences Here</span>
             </div>
           </div>
+          <div class="social-icons">
+            <a href="https://www.shecodes.io/contests/dream-travel-destination-challenge/"><img src="images/+1.png"></a>
+            <a href="https://www.linkedin.com/in/kimberley-jacquemot/"><img src="images/linkedin-xxl.png"></a>
+          </div>
         </div>
+      </div>
+
       <!-- Second Section -->
       <div>
         <div class="containers2">
-          <nav>
-            <img src="images/logo.png" class="logo">
-            <ul>
-              <li><a href="#s1">Home</a></li>
-              <li><a href="#s2">Places</a></li>
-              <li><a href="#s3">Food</a></li>
-              <li><a href="#s4">Culture</a></li>
-            </ul>
-            <img src="images/plane.png" class="cart-icon">
-          </nav>
           <div class="mainContainer">
             <div class="menu">
               <div>
                 <i class="fa fa-bars" aria-hidden="true"></i>
               </div>
-                <div class="quote center">
-                  JAPAN - THE LAND OF RISING SUN
-                </div>
+              <div class="quote center">
+                JAPAN - THE LAND OF RISING SUN
               </div>
-              <div id="content1" class="content">
-                <div class="header center">
-                  MOUNT<br> FUJI <br>
-                </div>
-                <div class="jap">(&nbsp;Fujisan&nbsp;)&nbsp;&nbsp;&nbsp;富士山</div>
-                <div class="info">
-                  Mount Fuji is located on Honshu Island, is the highest mountain in Japan at 3,776.24 m. Mount Fuji's exceptionally symmetrical cone and is a well-known symbol of Japan and it is frequently depicted in art and photographs, as well as visited by sightseers and climbers.
-                </div>
-                <div class="flag">
-                  <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/1200px-Flag_of_Japan.svg.png" alt="">
-                  <span>日本の観光</span>
-                </div>
-              </div>         
-              <div id="content2" class="content">
-                <div class="header center">
-                  KYOTO <br>
-                </div>
-                <div class="jap">(&nbsp;Kyōto-shi&nbsp;)&nbsp;&nbsp;&nbsp;京都市</div>
-                <div class="info">
-                  Kyoto is a city located in the central part of Japan's Honshu Island. It is famous for its numerous classical Buddhist temples, gardens, imperial palaces, Shinto shrines, and traditional wooden houses. The city was the former capital of Japan and during this time, it was the center of Japanese culture, religion, and politics.
-                </div>
-                <div class="flag">
-                  <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/1200px-Flag_of_Japan.svg.png" alt="">
-                  <span>日本の観光</span>
-                </div>
+            </div>
+            <!-- Fuji Card -->
+            <div id="content1" class="content">
+              <div class="header center">
+                MOUNT<br> FUJI <br>
               </div>
-              <div id="content3" class="content">
-                <div class="header center">
-                  OSAKA <br>
-                </div>
-                <div class="jap">(&nbsp;Ōsaka-shi&nbsp;)&nbsp;&nbsp;&nbsp;大阪市</div>
-                <div class="info">
-                  Osaka is a city located in the Kansai region of Japan's Honshu Island. It is known for its bustling streets, vibrant nightlife, and delicious food. Osaka is home to many historical landmarks, such as Osaka Castle, as well as modern attractions like Universal Studios Japan.            
-                </div>
-                <div class="flag">
-                  <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/1200px-Flag_of_Japan.svg.png" alt="">
-                  <span>日本の観光</span>
-                </div>
+              <div class="jap">(&nbsp;Fujisan&nbsp;)&nbsp;&nbsp;&nbsp;富士山</div>
+              <div class="info">
+                Mount Fuji is located on Honshu Island, is the highest mountain in Japan at 3,776.24 m. Mount Fuji's
+                exceptionally symmetrical cone and is a well-known symbol of Japan and it is frequently depicted in art
+                and photographs, as well as visited by sightseers and climbers.
               </div>
-              <div id="content4" class="content">
-                <div class="header center">
-                  TOKYO <br>
-                </div>
-                <div class="jap">(&nbsp;Tōkyō-to&nbsp;)&nbsp;&nbsp;&nbsp;東京都</div>
-                <div class="info">
-                  Tokyo is the capital city of Japan and is known for its huge metropolis and modern architecture. It offers a unique blend of traditional Japanese culture and cutting-edge technology, with attractions such as the iconic Tokyo Tower, the historic Senso-ji Temple, and the high-end shopping district of Ginza.
-                </div>
-                <div class="flag">
-                  <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/1200px-Flag_of_Japan.svg.png" alt="">
-                  <span>日本の観光</span>
-                </div>
+              <div class="flag">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/1200px-Flag_of_Japan.svg.png"
+                  alt="">
+                <span>日本の観光</span>
               </div>
-              <div id="content5" class="content">
-                <div class="header center">
-                  HIROSHIMA <br>
-                </div>
-                <div class="jap">(&nbsp;Hiroshima-shi&nbsp;)&nbsp;&nbsp;&nbsp;広島市</div>
-                <div class="info">
-                  Hiroshima is a city located in western Honshu, Japan. It is most well-known for the devastating atomic bombing during World War II, but it has since rebuilt into a bustling modern city with a rich history and culture. Visitors can explore the Peace Memorial Park, Hiroshima Castle, and enjoy delicious Hiroshima-style okonomiyaki.                            
-                </div>
-                <div class="flag">
-                  <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/1200px-Flag_of_Japan.svg.png" alt="">
-                  <span>日本の観光</span>
-                </div>
+            </div>
+            <!-- Kyoto Card -->
+            <div id="content2" class="content">
+              <div class="header center">
+                KYOTO <br>
               </div>
-              <div id="imgHold" class="imgHold center">
-                <img class="imgAffiche"/>
+              <div class="jap">(&nbsp;Kyōto-shi&nbsp;)&nbsp;&nbsp;&nbsp;京都市</div>
+              <div class="info">
+                Kyoto is a city located in the central part of Japan's Honshu Island. It is famous for its numerous
+                classical Buddhist temples, gardens, imperial palaces, Shinto shrines, and traditional wooden houses.
+                The city was the former capital of Japan and during this time, it was the center of Japanese culture,
+                religion, and politics.
               </div>
-              <div class="footer center">
-                <div id="radios">
-                  <label for="input1"></label>
-                  <input id="input1" name="radio" type="radio" checked onchange="showContent(1)"/>                                
-                  <label for="input2"></label>
-                  <input id="input2" name="radio" type="radio" onchange="showContent(2)" />
-                  <label for="input3"></label>
-                  <input id="input3" name="radio" type="radio" onchange="showContent(3)" />
-                  <label for="input4"></label>
-                  <input id="input4" name="radio" type="radio" onchange="showContent(4)" />
-                  <label for="input5"></label>
-                  <input id="input5" name="radio" type="radio" onchange="showContent(5)" />
-                  <span id="contentSlider"></span>
-                </div>
-              </div>           
-              <script>
-                var imgAffiche = document.querySelector(".imgAffiche");
-                // Store the background images in an array
-                var bgImages = [
-                  "https://images.pexels.com/photos/46253/mt-fuji-sea-of-clouds-sunrise-46253.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
-                  "https://lp-cms-production.imgix.net/2021-12/shutterstockRF_173501879.jpg",
-                  "https://a.cdn-hotels.com/gdcs/production1/d1520/d15bcc97-8a7b-4f23-b37d-abe7bb267e45.jpg",
-                  "https://media.cntraveler.com/photos/63482b255e7943ad4006df0b/16:9/w_6000,h_3375,c_limit/tokyoGettyImages-1031467664.jpeg",
-                  "https://focus.courrierinternational.com/2022/02/05/0/0/800/533/1280/0/60/0/1cc5eb4_1644068021104-hiroshima.jpeg"
-                ];
-                showContent(1);
+              <div class="flag">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/1200px-Flag_of_Japan.svg.png"
+                  alt="">
+                <span>日本の観光</span>
+              </div>
+            </div>
+            <!-- Osaka Card -->
+            <div id="content3" class="content">
+              <div class="header center">
+                OSAKA <br>
+              </div>
+              <div class="jap">(&nbsp;Ōsaka-shi&nbsp;)&nbsp;&nbsp;&nbsp;大阪市</div>
+              <div class="info">
+                Osaka is a city located in the Kansai region of Japan's Honshu Island. It is known for its bustling
+                streets, vibrant nightlife, and delicious food. Osaka is home to many historical landmarks, such as
+                Osaka Castle, as well as modern attractions like Universal Studios Japan.
+              </div>
+              <div class="flag">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/1200px-Flag_of_Japan.svg.png"
+                  alt="">
+                <span>日本の観光</span>
+              </div>
+            </div>
+            <!-- Tokyo Card -->
+            <div id="content4" class="content">
+              <div class="header center">
+                TOKYO <br>
+              </div>
+              <div class="jap">(&nbsp;Tōkyō-to&nbsp;)&nbsp;&nbsp;&nbsp;東京都</div>
+              <div class="info">
+                Tokyo is the capital city of Japan and is known for its huge metropolis and modern architecture. It
+                offers a unique blend of traditional Japanese culture and cutting-edge technology, with attractions such
+                as the iconic Tokyo Tower, the historic Senso-ji Temple, and the high-end shopping district of Ginza.
+              </div>
+              <div class="flag">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/1200px-Flag_of_Japan.svg.png"
+                  alt="">
+                <span>日本の観光</span>
+              </div>
+            </div>
+            <!-- Hiroshima Card -->
+            <div id="content5" class="content">
+              <div class="header center">
+                HIROSHIMA <br>
+              </div>
+              <div class="jap">(&nbsp;Hiroshima-shi&nbsp;)&nbsp;&nbsp;&nbsp;広島市</div>
+              <div class="info">
+                Hiroshima is a city located in western Honshu, Japan. It is most well-known for the devastating atomic
+                bombing during World War II, but it has since rebuilt into a bustling modern city with a rich history
+                and culture. Visitors can explore the Peace Memorial Park, Hiroshima Castle, and enjoy delicious
+                Hiroshima-style okonomiyaki.
+              </div>
+              <div class="flag">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/1200px-Flag_of_Japan.svg.png"
+                  alt="">
+                <span>日本の観光</span>
+              </div>
+            </div>
+            <div id="imgHold" class="imgHold center">
+              <img class="imgAffiche" />
+            </div>
+            <!-- Card Selection -->
+            <div class="footer center">
+              <div id="radios">
+                <label for="input1"></label>
+                <input id="input1" name="radio" type="radio" checked onchange="showContent(1)" />
+                <label for="input2"></label>
+                <input id="input2" name="radio" type="radio" onchange="showContent(2)" />
+                <label for="input3"></label>
+                <input id="input3" name="radio" type="radio" onchange="showContent(3)" />
+                <label for="input4"></label>
+                <input id="input4" name="radio" type="radio" onchange="showContent(4)" />
+                <label for="input5"></label>
+                <input id="input5" name="radio" type="radio" onchange="showContent(5)" />
+                <span id="contentSlider"></span>
+              </div>
+            </div>
 
-                function showContent(contentNumber) {
-                  // hide all contents
-                  var contents = document.querySelectorAll(".content");
-                  for (var i = 0; i < contents.length; i++) {
-                    contents[i].style.display = "none";
-                  }
-                  // show the selected content
-                  var selectedContent = document.getElementById("content" + contentNumber);
-                  selectedContent.style.display = "block";
-                  // set the background image of imgHold
-                  imgAffiche.src = bgImages[contentNumber-1]; 
+            <!-- Script to change the card content -->
+            <script>
+              var imgAffiche = document.querySelector(".imgAffiche");
+              // Store the background images in an array
+              var bgImages = [
+                "https://images.pexels.com/photos/46253/mt-fuji-sea-of-clouds-sunrise-46253.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+                "https://lp-cms-production.imgix.net/2021-12/shutterstockRF_173501879.jpg",
+                "https://a.cdn-hotels.com/gdcs/production1/d1520/d15bcc97-8a7b-4f23-b37d-abe7bb267e45.jpg",
+                "https://media.cntraveler.com/photos/63482b255e7943ad4006df0b/16:9/w_6000,h_3375,c_limit/tokyoGettyImages-1031467664.jpeg",
+                "https://focus.courrierinternational.com/2022/02/05/0/0/800/533/1280/0/60/0/1cc5eb4_1644068021104-hiroshima.jpeg"
+              ];
+              showContent(1);
+
+              function showContent(contentNumber) {
+                // hide all contents
+                var contents = document.querySelectorAll(".content");
+                for (var i = 0; i < contents.length; i++) {
+                  contents[i].style.display = "none";
                 }
-              </script>                       
+                // show the selected content
+                var selectedContent = document.getElementById("content" + contentNumber);
+                selectedContent.style.display = "block";
+                // set the background image of imgHold
+                imgAffiche.src = bgImages[contentNumber - 1];
+              }
+            </script>
+          </div>
+        </div>
+      </div>
+
+      <!-- Third Section -->
+      <div class>
+        <div class="containers3">
+          <div class="boxFood">
+            <div class="bloc active">
+              <div class="bloc-haut">
+                <div class="rond">
+                  <img src="images/Noodles.png" />
+                </div>
+                <p class="titre-section">Noodles</p>
+                <div class="ligne"></div>
+                <p class="dot">&#8226;</p>
+              </div>
+              <div class="contenu">
+                <img src="images/Noodles.png" alt="">
+                <div class="infos">
+                  <h2>Japanese Noodles</h2>
+                  <p>Eating noodles in Japan is a must-try experience for food lovers. From ramen to soba and udon,
+                    Japanese noodle dishes are famous for their unique flavors and textures. The culture and history
+                    behind each type of noodle make the dining experience even more special.</p>
+                </div>
+              </div>
+            </div>
+            <div class="bloc">
+              <div class="bloc-haut">
+                <div class="rond">
+                  <img src="images/Onigiri.png" />
+                </div>
+                <p class="titre-section">Onigiri</p>
+                <div class="ligne"></div>
+                <p class="dot">&#8226;</p>
+              </div>
+              <div class="contenu">
+                <img src="images/Onigiri.png" alt="">
+                <div class="infos">
+                  <h2>Onigiri</h2>
+                  <p>Onigiri is a popular Japanese food that is both tasty and convenient. These rice balls are often
+                    filled with various ingredients, such as salmon, tuna, pickled plums, or seaweed, and make for a
+                    quick and easy snack or meal. They are also often wrapped in nori seaweed, which adds a unique
+                    flavor and texture. </p>
+                </div>
+              </div>
+            </div>
+            <div class="bloc">
+              <div class="bloc-haut">
+                <div class="rond">
+                  <img src="images/matcha.png" />
+                </div>
+                <p class="titre-section">Tea</p>
+                <div class="ligne"></div>
+                <p class="dot">&#8226;</p>
+              </div>
+              <div class="contenu">
+                <img src="images/matcha.png">
+                <div class="infos">
+                  <h2>Matcha Tea</h2>
+                  <p>Matcha tea is a traditional Japanese green tea that is finely ground into a powder and whisked with
+                    hot water. It has a unique, rich flavor and is packed with health benefits, including antioxidants,
+                    vitamins, and minerals. It's a must-try for any tea lover or anyone looking to explore the unique
+                    flavors of Japan.</p>
+                </div>
+              </div>
+            </div>
+            <div class="bloc">
+              <div class="bloc-haut">
+                <div class="rond">
+                  <img src="images/Sushi.png" />
+                </div>
+                <p class="titre-section">Sushi</p>
+                <div class="ligne"></div>
+                <p class="dot">&#8226;</p>
+              </div>
+              <div class="contenu">
+                <img src="images/Sushi.png" alt="">
+                <div class="infos">
+                  <h2>Sushi</h2>
+                  <p>Sushi is a quintessential Japanese cuisine that is known and loved all over the world. Made with
+                    the freshest and highest-quality ingredients, sushi in Japan is a must-try experience for any food
+                    lover. From the traditional nigiri to the more modern rolls, the diversity of sushi available in
+                    Japan is unmatched. </p>
+                </div>
+              </div>
+            </div>
+            <div class="bloc">
+              <div class="bloc-haut">
+                <div class="rond">
+                  <img src="images/Sake.png" />
+                </div>
+                <p class="titre-section">Sake</p>
+                <div class="ligne"></div>
+                <p class="dot">&#8226;</p>
+              </div>
+              <div class="contenu">
+                <img src="images/Sake.png" alt="">
+                <div class="infos">
+                  <h2>Sake</h2>
+                  <p>Sake is a traditional Japanese beverage made from fermented rice. It has a unique taste and aroma
+                    that can complement a wide variety of dishes, from sushi to grilled meats. Its flavor can range from
+                    light and floral to rich and full-bodied, depending on the type of sake you choose. Sake's subtle
+                    sweetness and acidity can balance out the saltiness and umami of Japanese cuisine. </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <!-- Third Section -->
-        <div class>
-          <div class="containers3">
-            <nav>
-              <img src="images/logo.png" class="logo">
-              <ul>
-                <li><a href="#s1">Home</a></li>
-                <li><a href="#s2">Places</a></li>
-                <li><a href="#s3">Food</a></li>
-                <li><a href="#s4">Culture</a></li>
-              </ul>
-              <img src="images/plane.png" class="cart-icon">
-            </nav>
-            <div class="boxFood">
-              <div class="bloc active">
-                <div class="bloc-haut">
-                  <div class="rond">
-                    <img src="images/Noodles.png" />
-                  </div>
-                  <p class="titre-section">Noodles</p>
-                  <div class="ligne"></div>
-                  <p class="prix">&#8226;</p>
-                </div>
-                <div class="contenu">
-                    <img src="images/Noodles.png" alt="">
-                    <div class="infos">
-                        <h2>Japanese Noodles</h2>
-                        <p>Eating noodles in Japan is a must-try experience for food lovers. From ramen to soba and udon, Japanese noodle dishes are famous for their unique flavors and textures. The culture and history behind each type of noodle make the dining experience even more special.</p>
-                    </div>
-                </div>
-              </div>
-              <div class="bloc">
-                <div class="bloc-haut">
-                  <div class="rond">
-                    <img src="images/Onigiri.png" />
-                  </div>
-                  <p class="titre-section">Onigiri</p>
-                  <div class="ligne"></div>
-                  <p class="prix">&#8226;</p>
-                </div>
-                <div class="contenu">
-                    <img src="images/Onigiri.png" alt="">
-                    <div class="infos">
-                        <h2>Onigiri</h2>
-                        <p>Onigiri is a popular Japanese food that is both tasty and convenient. These rice balls are often filled with various ingredients, such as salmon, tuna, pickled plums, or seaweed, and make for a quick and easy snack or meal. They are also often wrapped in nori seaweed, which adds a unique flavor and texture. </p>
-                    </div>
-                </div>
-              </div>
-              <div class="bloc">
-                <div class="bloc-haut">
-                  <div class="rond">
-                    <img src="images/matcha.png" />
-                  </div>
-                  <p class="titre-section">Tea</p>
-                  <div class="ligne"></div>
-                  <p class="prix">&#8226;</p>
-                </div>
-                <div class="contenu">
-                    <img src="images/matcha.png">
-                    <div class="infos">
-                        <h2>Matcha Tea</h2>
-                        <p>Matcha tea is a traditional Japanese green tea that is finely ground into a powder and whisked with hot water. It has a unique, rich flavor and is packed with health benefits, including antioxidants, vitamins, and minerals. It's a must-try for any tea lover or anyone looking to explore the unique flavors of Japan.</p>
-                    </div>
-                </div>
-              </div>
-              <div class="bloc">
-                <div class="bloc-haut">
-                  <div class="rond">
-                    <img src="images/Sushi.png" />
-                  </div>
-                  <p class="titre-section">Sushi</p>
-                  <div class="ligne"></div>
-                  <p class="prix">&#8226;</p>
-                </div>
-                <div class="contenu">
-                    <img src="images/Sushi.png" alt="">
-                    <div class="infos">
-                        <h2>Sushi</h2>
-                        <p>Sushi is a quintessential Japanese cuisine that is known and loved all over the world. Made with the freshest and highest-quality ingredients, sushi in Japan is a must-try experience for any food lover. From the traditional nigiri to the more modern rolls, the diversity of sushi available in Japan is unmatched. </p>
-                    </div>
-                </div>
-              </div>
 
-              <div class="bloc">
-                <div class="bloc-haut">
-                  <div class="rond">
-                    <img src="images/Sake.png" />
-                  </div>
-                  <p class="titre-section">Sake</p>
-                  <div class="ligne"></div>
-                  <p class="prix">&#8226;</p>
-                </div>
-                <div class="contenu">
-                    <img src="images/Sake.png" alt="">
-                    <div class="infos">
-                        <h2>Sake</h2>
-                        <p>Sake is a traditional Japanese beverage made from fermented rice. It has a unique taste and aroma that can complement a wide variety of dishes, from sushi to grilled meats. Its flavor can range from light and floral to rich and full-bodied, depending on the type of sake you choose. Sake's subtle sweetness and acidity can balance out the saltiness and umami of Japanese cuisine. </p>
-                    </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <script>
-            const allBlocs = document.querySelectorAll('.bloc');
-            allBlocs.forEach(bloc => {
-                bloc.addEventListener('click', (e) => {
+        <!-- Script to display selected block and hide the others -->
+        <script>
+          const allBlocs = document.querySelectorAll('.bloc');
+          allBlocs.forEach(bloc => {
+            bloc.addEventListener('click', (e) => {
 
-                    // console.log(e.target);
-                    e.target.classList.add('active');
+              // console.log(e.target);
+              e.target.classList.add('active');
 
-                    for(let i = 0; i < allBlocs.length; i++ ){
-                        if(allBlocs[i] !== e.target){
-                            allBlocs[i].classList.remove('active');
-                        }
-                    }
-                    
-
-                })
+              for (let i = 0; i < allBlocs.length; i++) {
+                if (allBlocs[i] !== e.target) {
+                  allBlocs[i].classList.remove('active');
+                }
+              }
             })
-          </script>
-        </div>
-        <!-- Fourth Section -->
-        <div>
-          <div class="containers4">
-            <nav>
-              <img src="images/logo.png" class="logo">
-              <ul>
-                <li><a href="#s1">Home</a></li>
-                <li><a href="#s2">Places</a></li>
-                <li><a href="#s3">Food</a></li>
-                <li><a href="#s4">Culture</a></li>
-              </ul>
-              <img src="images/plane.png" class="cart-icon">
-            </nav>
-          <section id="timeline">
+          })
+        </script>
+      </div>
+
+      <!-- Fourth Section -->
+      <div>
+        <div class="containers4">
+          <section id="culture">
             <div class="tl-item">
-              <div class="tl-bg" style="background-image: url(https://images.unsplash.com/photo-1627309406180-0bb99b3feba3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80);"></div>
-              <div class="tl-year">
+              <div class="tl-bg"
+                style="background-image: url(https://images.unsplash.com/photo-1627309406180-0bb99b3feba3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80);">
+              </div>
+              <div class="tl-title">
                 <p class="f2 heading--sanSerif">Transportation</p>
               </div>
               <div class="tl-content">
                 <h1 class="f3 text--accent ttu">Transportation In Japan</h1>
-                <p>Transportation in Japan is known for being efficient, punctual, and convenient. The country has an extensive network of public transportation, including trains, subways, and buses. The most popular mode of transportation is the train, with a number of different railway companies operating throughout the country. The Shinkansen, or bullet train, is a high-speed train that can travel up to 320 kilometers per hour and connects major cities like Tokyo, Kyoto, and Osaka.</p>
+                <p>Transportation in Japan is known for being efficient, punctual, and convenient. The country has an
+                  extensive network of public transportation, including trains, subways, and buses. The most popular
+                  mode of transportation is the train, with a number of different railway companies operating throughout
+                  the country. The Shinkansen, or bullet train, is a high-speed train that can travel up to 320
+                  kilometers per hour and connects major cities like Tokyo, Kyoto, and Osaka.</p>
               </div>
             </div>
             <div class="tl-item">
-              <div class="tl-bg" style="background-image: url(https://samuraitours.com/wp-content/uploads/2012/01/istockphoto-612387772-612x612.jpg);  "></div>
-              <div class="tl-year">
+              <div class="tl-bg"
+                style="background-image: url(https://samuraitours.com/wp-content/uploads/2012/01/istockphoto-612387772-612x612.jpg);  ">
+              </div>
+              <div class="tl-title">
                 <p class="f2 heading--sanSerif">Politeness</p>
               </div>
               <div class="tl-content">
                 <h1 class="f3 text--accent ttu">Politeness In Japan</h1>
-                <p>Politeness is an important part of Japanese culture and is deeply ingrained in everyday life. In Japan, it is customary to show respect to others through the use of polite language, bowing, and other forms of etiquette. For example, when meeting someone for the first time, it is common to exchange business cards and bow. When dining out, it is customary to say "itadakimasu" before eating, which is a way of expressing gratitude for the meal. </p>
+                <p>Politeness is an important part of Japanese culture and is deeply ingrained in everyday life. In
+                  Japan, it is customary to show respect to others through the use of polite language, bowing, and other
+                  forms of etiquette. For example, when meeting someone for the first time, it is common to exchange
+                  business cards and bow. When dining out, it is customary to say "itadakimasu" before eating, which is
+                  a way of expressing gratitude for the meal. </p>
               </div>
             </div>
             <div class="tl-item">
-              <div class="tl-bg" style="background-image: url(https://images.unsplash.com/photo-1563698241165-73f2708e578e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80);  background-size: auto;"></div>
-              <div class="tl-year">
+              <div class="tl-bg"
+                style="background-image: url(https://images.unsplash.com/photo-1563698241165-73f2708e578e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80);  background-size: auto;">
+              </div>
+              <div class="tl-title">
                 <p class="f2 heading--sanSerif">Festivals</p>
               </div>
               <div class="tl-content">
                 <h1 class="f3 text--accent ttu">Festivals In Japan</h1>
-                <p>Festivals are an integral part of Japanese culture, and there are many held throughout the year. These festivals are known for their vibrant colors, music, and cultural significance. Some of the most famous festivals include the Cherry Blossom Festival, Gion Matsuri, and Aomori Nebuta Festival. These events attract both locals and visitors from around the world, and provide a unique glimpse into Japanese culture and tradition.</p>
+                <p>Festivals are an integral part of Japanese culture, and there are many held throughout the title.
+                  These festivals are known for their vibrant colors, music, and cultural significance. Some of the most
+                  famous festivals include the Cherry Blossom Festival, Gion Matsuri, and Aomori Nebuta Festival. These
+                  events attract both locals and visitors from around the world, and provide a unique glimpse into
+                  Japanese culture and tradition.</p>
               </div>
             </div>
             <div class="tl-item">
-              <div class="tl-bg" style="background-image: url(https://media-cdn.tripadvisor.com/media/photo-p/17/c0/05/4c/gundam-statue.jpg);   background-size: auto;"></div>
-              <div class="tl-year">
+              <div class="tl-bg"
+                style="background-image: url(https://media-cdn.tripadvisor.com/media/photo-p/17/c0/05/4c/gundam-statue.jpg);   background-size: auto;">
+              </div>
+              <div class="tl-title">
                 <p class="f2 heading--sanSerif">Pop Culture</p>
               </div>
               <div class="tl-content">
                 <h1 class="f3 text--accent ttu">Japanese Pop Culture</h1>
-                <p>Japan is a hub of unique and vibrant pop culture that has gained a global following. From anime and manga to video games and fashion, Japan's pop culture exports have had a major influence on global entertainment and media. Anime and manga, in particular, are known for their distinct visual styles and immersive storytelling, while Japanese video games have introduced innovative gameplay and captivating worlds to gamers worldwide.</p>
+                <p>Japan is a hub of unique and vibrant pop culture that has gained a global following. From anime and
+                  manga to video games and fashion, Japan's pop culture exports have had a major influence on global
+                  entertainment and media. Anime and manga, in particular, are known for their distinct visual styles
+                  and immersive storytelling, while Japanese video games have introduced innovative gameplay and
+                  captivating worlds to gamers worldwide.</p>
               </div>
             </div>
-          </section>          
+          </section>
         </div>
       </div>
     </div>
-        
-      <div class="prevNext">
-        <div><a class="slideLink" href="#s4"></a><a class="slideLink" href="#s2"></a></div>
-        <div><a class="slideLink" href="#s1"></a><a class="slideLink" href="#s3"></a></div>
-        <div><a class="slideLink" href="#s2"></a><a class="slideLink" href="#s4"></a></div>
-        <div><a class="slideLink" href="#s3"></a><a class="slideLink" href="#s1"></a></div>
-      </div>
-      <script>
-      // A script that adds the same comportment as the slider, but with scrolls  to navigate between #s1, #s2, #s3 and #s4
-      window.addEventListener("scroll", (e) => {
-        const scroll = window.scrollY;
-        const page = 0;
-        console.log(e);
-        const page1 = document.querySelector("#s1").offsetTop;
-        const page2 = document.querySelector("#s2").offsetTop;
-        const page3 = document.querySelector("#s3").offsetTop;
-        const page4 = document.querySelector("#s4").offsetTop;
 
-       
-      });
-      </script>
+    <!-- Slider buttons to switch pages (prev/next) -->
+    <div class="prevNext">
+      <div><a class="slideLink" href="#s4"></a><a class="slideLink" href="#s2"></a></div>
+      <div><a class="slideLink" href="#s1"></a><a class="slideLink" href="#s3"></a></div>
+      <div><a class="slideLink" href="#s2"></a><a class="slideLink" href="#s4"></a></div>
+      <div><a class="slideLink" href="#s3"></a><a class="slideLink" href="#s1"></a></div>
     </div>
+
+    <!-- Add an active class to the navbar when we switch sections -->
+    <script>
+      // Get the current page URL hash
+      var currentHash = window.location.hash;
+
+      // Get all the links in the navigation menu and the slideLinks
+      var links = document.querySelectorAll('nav ul li a');
+      var slideLinks = document.querySelectorAll('.slideLink');
+
+      // Loop through each link and check if its href matches the current URL hash
+      for (var i = 0; i < links.length; i++) {
+        if (links[i].getAttribute('href') === currentHash) {
+          // Toggle the "active" class on the link if its href matches the current URL hash
+          links[i].classList.toggle('active');
+          break; // Stop looping once we find the active link
+        }
+      }
+
+      // Add an event listener to each link to toggle the "active" class on click
+      for (var i = 0; i < links.length; i++) {
+        links[i].addEventListener('click', function (e) {
+          // Remove the "active" class from all links
+          for (var j = 0; j < links.length; j++) {
+            links[j].classList.remove('active');
+          }
+          // Toggle the "active" class on the clicked link
+          e.target.classList.toggle('active');
+        });
+      }
+
+      // Add event listeners to each slideLink to toggle the "active" class on click
+      for (var i = 0; i < slideLinks.length; i++) {
+        slideLinks[i].addEventListener('click', function (e) {
+          // Remove the "active" class from all links
+          for (var j = 0; j < links.length; j++) {
+            links[j].classList.remove('active');
+          }
+          // Toggle the "active" class on the link whose href matches the clicked slideLink's href
+          var slideLinkHref = e.target.getAttribute('href');
+          for (var k = 0; k < links.length; k++) {
+            if (links[k].getAttribute('href') === slideLinkHref) {
+              links[k].classList.toggle('active');
+              break; // Stop looping once we find the link to toggle
+            }
+          }
+        });
+      }
+    </script>
+  </div>
   </div>
 </body>
+
 </html>
