@@ -1260,56 +1260,13 @@
         window.location.hash = 's1';
       }
 
-      // Function to toggle the "active" class on a link
-      function toggleActiveClass(links, targetLink) {
-        // Remove the "active" class from all links
+      window.onhashchange = function() {
+        var hash = window.location.hash;
+        var links = document.querySelectorAll('nav ul li a');
         for (var i = 0; i < links.length; i++) {
           links[i].classList.remove('active');
         }
-        // Toggle the "active" class on the clicked link
-        targetLink.classList.toggle('active');
-      }
-    
-      // Get the current page URL hash
-      var currentHash = window.location.hash;
-    
-      // Get all the links in the navigation menu
-      var links = document.querySelectorAll('nav ul li a');
-    
-      // Loop through each link and check if its href matches the current URL hash
-      for (var i = 0; i < links.length; i++) {
-        if (links[i].getAttribute('href') === currentHash) {
-          // Toggle the "active" class on the link if its href matches the current URL hash
-          links[i].classList.toggle('active');
-          break; // Stop looping once we find the active link
-        }
-      }
-    
-      // Add an event listener to each link to toggle the "active" class on click
-      for (var i = 0; i < links.length; i++) {
-        links[i].addEventListener('click', function(e) {
-          // Toggle the "active" class on the clicked link
-          toggleActiveClass(links, e.target);
-        });
-      }
-    
-      // Add an event listener to #contentSlider to toggle the "active" class on the Home link
-      var contentSlider = document.querySelector('#contentSlider');
-      contentSlider.addEventListener('click', function() {
-        // Toggle the "active" class on the Home link
-        toggleActiveClass(links, links[0]);
-      });
-    
-      // Get the links for the three additional buttons
-      var additionalLinks = document.querySelectorAll('.slideLink, a[href="#s2"], a[href="#s3"], a[href="#s4"]');
-    
-      // Add an event listener to each additional link to toggle the "active" class on click
-      for (var i = 0; i < additionalLinks.length; i++) {
-        additionalLinks[i].addEventListener('click', function(e) {
-          // Find the link with the matching href and toggle the "active" class
-          var targetLink = document.querySelector('a[href="' + e.target.getAttribute('href') + '"]');
-          toggleActiveClass(links, targetLink);
-        });
+        document.querySelector('a[href="' + hash + '"]').classList.add('active');
       }
     </script>
     
