@@ -18,7 +18,7 @@
           <nav>
             <img src="images/logo.png" class="logo">
             <ul>
-              <li><a href="#s1">Home</a></li>
+              <li><a class="active" href="#s1">Home</a></li>
               <li><a href="#s2">Places</a></li>
               <li><a href="#s3">Food</a></li>
               <li><a href="#s4">Culture</a></li>
@@ -311,7 +311,7 @@
             </nav>
           <section id="timeline">
             <div class="tl-item">
-              <div class="tl-bg" style="background-image: url(https://images.unsplash.com/photo-1627309406180-0bb99b3feba3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80)"></div>
+              <div class="tl-bg" style="background-image: url(https://images.unsplash.com/photo-1627309406180-0bb99b3feba3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80);"></div>
               <div class="tl-year">
                 <p class="f2 heading--sanSerif">Transportation</p>
               </div>
@@ -321,7 +321,7 @@
               </div>
             </div>
             <div class="tl-item">
-              <div class="tl-bg" style="background-image: url(https://samuraitours.com/wp-content/uploads/2012/01/istockphoto-612387772-612x612.jpg)"></div>
+              <div class="tl-bg" style="background-image: url(https://samuraitours.com/wp-content/uploads/2012/01/istockphoto-612387772-612x612.jpg);  "></div>
               <div class="tl-year">
                 <p class="f2 heading--sanSerif">Politeness</p>
               </div>
@@ -331,7 +331,7 @@
               </div>
             </div>
             <div class="tl-item">
-              <div class="tl-bg" style="background-image: url(https://images.unsplash.com/photo-1563698241165-73f2708e578e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80)"></div>
+              <div class="tl-bg" style="background-image: url(https://images.unsplash.com/photo-1563698241165-73f2708e578e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=638&q=80);  background-size: auto;"></div>
               <div class="tl-year">
                 <p class="f2 heading--sanSerif">Festivals</p>
               </div>
@@ -341,7 +341,7 @@
               </div>
             </div>
             <div class="tl-item">
-              <div class="tl-bg" style="background-image: url(https://media-cdn.tripadvisor.com/media/photo-p/17/c0/05/4c/gundam-statue.jpg)"></div>
+              <div class="tl-bg" style="background-image: url(https://media-cdn.tripadvisor.com/media/photo-p/17/c0/05/4c/gundam-statue.jpg);   background-size: auto;"></div>
               <div class="tl-year">
                 <p class="f2 heading--sanSerif">Pop Culture</p>
               </div>
@@ -361,6 +361,20 @@
         <div><a class="slideLink" href="#s2"></a><a class="slideLink" href="#s4"></a></div>
         <div><a class="slideLink" href="#s3"></a><a class="slideLink" href="#s1"></a></div>
       </div>
+      <script>
+      // A script that adds the same comportment as the slider, but with scrolls  to navigate between #s1, #s2, #s3 and #s4
+      window.addEventListener("scroll", (e) => {
+        const scroll = window.scrollY;
+        const page = 0;
+        console.log(e);
+        const page1 = document.querySelector("#s1").offsetTop;
+        const page2 = document.querySelector("#s2").offsetTop;
+        const page3 = document.querySelector("#s3").offsetTop;
+        const page4 = document.querySelector("#s4").offsetTop;
+
+       
+      });
+      </script>
     </div>
   </div>
 </body>
